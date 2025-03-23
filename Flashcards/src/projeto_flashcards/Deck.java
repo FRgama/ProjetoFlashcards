@@ -35,7 +35,4 @@ public class Deck {
     public void shuffleDeck(){ // Embaralha o deck
         Collections.shuffle(flashCards);
     }
-
-
-
 }
