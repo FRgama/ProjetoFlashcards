@@ -1,3 +1,5 @@
+package projeto_flashcards;
+
 public class FlashCard {
 
     private String question;

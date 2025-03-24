@@ -1,3 +1,5 @@
+package projeto_flashcards;
+
 import java.util.Scanner;
 
 public class Main {
