@@ -1,17 +1,17 @@
 package projeto_flashcards;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import Flashcards.src.projeto_flashcards.FlashCard;
+
+import java.util.PriorityQueue;
 
 public class Deck {
 
     private String name;
-    private List<FlashCard> flashCards;
+    private PriorityQueue<FlashCard> flashCards;
 
-    public Deck(String name){
+    public Deck(String name) {
         this.name = name;
-        this.flashCards = new ArrayList<>();
+        this.flashCards = new PriorityQueue<>();
     }
 
     public String getName() {
@@ -22,19 +22,19 @@ public class Deck {
         this.name = name;
     }
 
-    public List<FlashCard> getFlashCards() {
+    public PriorityQueue<FlashCard> getFlashCards() {
         return flashCards;
     }
 
-    public void addFlashcard(FlashCard Card){ //Adiciona nova carta ao deck
-        flashCards.add(Card);
+    public void addFlashcard(FlashCard card) {
+        flashCards.add(card);
     }
 
-    public void removeFlashcard(FlashCard Card){ // Remove carta do deck
-        flashCards.remove(Card);
+    public void removeFlashcard(FlashCard card) {
+        flashCards.remove(card);
     }
 
-    public void shuffleDeck(){ // Embaralha o deck
-        Collections.shuffle(flashCards);
+    public void shuffleDeck() {
+        System.out.println("Embaralhar não é aplicável com PriorityQueue. A fila já organiza automaticamente pela prioridade.");
     }
 }

@@ -1,4 +1,4 @@
-// Implementacao de Interface Gráfica
+/* package Flashcards.src.projeto_flashcards;// Implementacao de Interface Gráfica
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -11,7 +11,7 @@ public class FlashCardGUI {
     private JTextArea deckArea;
     private FlashcardController controller;
 
-    public FlashcardGUI() {
+    public FlashCardGUI() {
         controller = new FlashcardController();
 
         frame = new JFrame("Flashcards");
@@ -60,3 +60,4 @@ public class FlashCardGUI {
         new FlashCardGUI();
     }
 }
+*/

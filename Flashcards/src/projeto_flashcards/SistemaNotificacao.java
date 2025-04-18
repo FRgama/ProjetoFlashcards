@@ -1,4 +1,4 @@
-package projeto_flashcards;
+package Flashcards.src.projeto_flashcards;
 import java.util.*;
 
 //Classe que gerencia notificações (Sujeito/Subject do Observer)

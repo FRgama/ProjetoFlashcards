@@ -1,4 +1,4 @@
-package projeto_flashcards;
+package Flashcards.src.projeto_flashcards;
 
 public interface Observer {
 	
