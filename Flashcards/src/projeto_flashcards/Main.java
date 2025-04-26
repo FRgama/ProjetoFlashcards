@@ -1,5 +1,6 @@
 package Flashcards.src.projeto_flashcards;
 import java.util.*;
+import java.util.ArrayList;
 
 public class Main {
     static Scanner scanner = new Scanner(System.in);
