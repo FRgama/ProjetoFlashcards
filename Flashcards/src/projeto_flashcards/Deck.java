@@ -1,5 +1,6 @@
 package projeto_flashcards;
 import Flashcards.src.projeto_flashcards.FlashCard;
+
 import java.util.PriorityQueue;
 
 public class Deck {
