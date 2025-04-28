@@ -1,10 +1,11 @@
-package Flashcards.src.projeto_flashcards;
+package Flashcards.src.flashcards.view;
 
+import Flashcards.src.flashcards.model.Deck;
+import Flashcards.src.flashcards.model.FlashCard;
 import com.formdev.flatlaf.FlatDarkLaf;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,7 +16,7 @@ public class FlashCardGUI {
     private JTextField nomeDeckField;
     private JTextArea deckArea;
     private JComboBox<String> deckSelector;
-    private List<projeto_flashcards.Deck> decks = new ArrayList<>();
+    private List<Deck> decks = new ArrayList<>();
 
     public FlashCardGUI() {
         FlatDarkLaf.setup();
@@ -30,14 +31,15 @@ public class FlashCardGUI {
         frame.setSize(600, 500);
 
         // Criar deck inicial
-        projeto_flashcards.Deck deckInicial = new projeto_flashcards.Deck("Deck Inicial");
+        Deck deckInicial = new Deck("Deck Inicial");
         decks.add(deckInicial);
 
         JTabbedPane tabbedPane = new JTabbedPane();
+        tabbedPane.addTab("Criar Deck", criarPainelGerenciar());
         tabbedPane.addTab("Criar Flashcard", criarPainelCriar());
-        tabbedPane.addTab("Ver Decks", criarPainelVer());
+        tabbedPane.addTab("Lista de Decks", criarPainelVer());
         tabbedPane.addTab("Estudar", criarPainelEstudo());
-        tabbedPane.addTab("Gerenciar Decks", criarPainelGerenciar());
+
 
         frame.add(tabbedPane);
         frame.setVisible(true);
@@ -70,9 +72,9 @@ public class FlashCardGUI {
             String resposta = respostaField.getText();
             int selectedIndex = deckSelector.getSelectedIndex();
             if (selectedIndex >= 0 && !pergunta.isEmpty() && !resposta.isEmpty()) {
-                projeto_flashcards.Deck deckSelecionado = decks.get(selectedIndex);
+                Deck deckSelecionado = decks.get(selectedIndex);
                 FlashCard novoCard = new FlashCard(pergunta, resposta);
-                deckSelecionado.addFlashcard(novoCard);
+                deckSelecionado.addFlashCard(novoCard);
                 perguntaField.setText("");
                 respostaField.setText("");
                 JOptionPane.showMessageDialog(frame, "Flashcard adicionado ao deck " + deckSelecionado.getName() + "!");
@@ -158,7 +160,7 @@ public class FlashCardGUI {
         criarButton.addActionListener(e -> {
             String nome = nomeDeckField.getText();
             if (!nome.isEmpty()) {
-                decks.add(new projeto_flashcards.Deck(nome));
+                decks.add(new Deck(nome));
                 atualizarDeckSelector();
                 nomeDeckField.setText("");
                 JOptionPane.showMessageDialog(frame, "Novo deck \"" + nome + "\" criado!");
@@ -176,28 +178,25 @@ public class FlashCardGUI {
 
     private void atualizarDeckSelector() {
         deckSelector.removeAllItems();
-        for (projeto_flashcards.Deck d : decks) {
+        for (Deck d : decks) {
             deckSelector.addItem(d.getName());
         }
     }
 
     private void atualizarDeck() {
-        // Esse método agora não requer um painel específico
-        // Atualizando o combo box de decks
         atualizarDeckSelector();
     }
 
     private void atualizarDeck(JPanel painelFlashcards) {
-        painelFlashcards.removeAll(); // Limpar a grade de flashcards
+        painelFlashcards.removeAll();
 
-        for (projeto_flashcards.Deck deck : decks) {
-            // Criar um painel para cada deck
+        for (Deck deck : decks) {
+
             JPanel painelDeck = new JPanel();
             painelDeck.setLayout(new BoxLayout(painelDeck, BoxLayout.Y_AXIS));
             JLabel deckLabel = new JLabel(deck.getName());
             painelDeck.add(deckLabel);
 
-            // Para cada flashcard no deck
             for (FlashCard card : deck.getFlashCards()) {
                 JPanel cardPanel = new JPanel();
                 cardPanel.setLayout(new BorderLayout());
@@ -233,7 +232,7 @@ public class FlashCardGUI {
             return;
         }
 
-        projeto_flashcards.Deck deckSelecionado = decks.get(selectedIndex);
+        Deck deckSelecionado = decks.get(selectedIndex);
         List<FlashCard> cardsParaEstudo = new ArrayList<>(deckSelecionado.getFlashCards());
 
         if (cardsParaEstudo.isEmpty()) {

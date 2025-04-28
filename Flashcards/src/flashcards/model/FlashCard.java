@@ -1,4 +1,4 @@
-package Flashcards.src.projeto_flashcards;
+package Flashcards.src.flashcards.model;
 
 public class FlashCard implements Comparable<FlashCard> {
     private String question;
@@ -33,6 +33,6 @@ public class FlashCard implements Comparable<FlashCard> {
 
     @Override
     public String toString() {
-        return "Pergunta: " + question + " | Resposta: " + answer + " | Dificuldade: " + difficulty;
+        return String.format("Pergunta: %s | Resposta: %s | Dificuldade: %d", question, answer, difficulty);
     }
 }

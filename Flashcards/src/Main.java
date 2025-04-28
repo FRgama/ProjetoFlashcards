@@ -1,10 +1,13 @@
-package Flashcards.src.projeto_flashcards;
+package Flashcards.src;
+import Flashcards.src.flashcards.model.Deck;
+import Flashcards.src.flashcards.model.FlashCard;
+
 import java.util.*;
 import java.util.ArrayList;
 
 public class Main {
     static Scanner scanner = new Scanner(System.in);
-    static ArrayList<projeto_flashcards.Deck> decks = new ArrayList<>();
+    static ArrayList<Deck> decks = new ArrayList<>();
 
     public static void printOptions() {
         System.out.println("\nO que você deseja fazer?");
@@ -20,7 +23,7 @@ public class Main {
         System.out.println("Ok, vamos criar seu deck!");
         System.out.print("Qual será o nome do Deck? ");
         String deckName = scanner.nextLine();
-        decks.add(new projeto_flashcards.Deck(deckName));
+        decks.add(new Deck(deckName));
         System.out.println("Pronto! Seu deck chamado \"" + deckName + "\" foi criado!");
     }
 
@@ -28,7 +31,7 @@ public class Main {
         System.out.print("Digite o nome do deck onde deseja adicionar a carta: ");
         String name = scanner.nextLine();
 
-        for (projeto_flashcards.Deck deck : decks) {
+        for (Deck deck : decks) {
             if (deck.getName().equalsIgnoreCase(name)) {
                 while (true) {
                     System.out.print("Digite a pergunta (ou '1' para sair): ");
@@ -39,7 +42,7 @@ public class Main {
                     String resposta = scanner.nextLine();
 
                     FlashCard novoCard = new FlashCard(pergunta, resposta);
-                    deck.addFlashcard(novoCard);
+                    deck.addFlashCard(novoCard);
                     System.out.println("Carta adicionada ao deck \"" + deck.getName() + "\"!");
                 }
             }
@@ -51,7 +54,7 @@ public class Main {
         System.out.print("Digite o nome do deck que deseja visualizar: ");
         String name = scanner.nextLine();
 
-        for (projeto_flashcards.Deck deck : decks) {
+        for (Deck deck : decks) {
             if (deck.getName().equalsIgnoreCase(name)) {
                 if (deck.getFlashCards().isEmpty()) {
                     System.out.println("O deck está vazio.");
@@ -71,7 +74,7 @@ public class Main {
         System.out.print("Digite o nome do deck que deseja estudar: ");
         String name = scanner.nextLine();
 
-        for (projeto_flashcards.Deck deck : decks) {
+        for (Deck deck : decks) {
             if (deck.getName().equalsIgnoreCase(name)) {
                 if (deck.getFlashCards().isEmpty()) {
                     System.out.println("O deck está vazio.");
